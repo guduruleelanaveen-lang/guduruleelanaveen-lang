@@ -1,7 +1,7 @@
 const container = document.getElementById("dataset-container");
 
-// New API URL from data.gov.uk
-const API_URL = "https://data.gov.uk/api/action/package_search?q=london&rows=10";
+// Local JSON file (derived from UK open data)
+const API_URL = "uk-open-data.json";
 
 function escapeHtml(text) {
   const div = document.createElement("div");
@@ -17,38 +17,35 @@ fetch(API_URL)
     return response.json();
   })
   .then((data) => {
-    console.log("API response:", data);
+    console.log("Local open data JSON:", data);
 
-    if (!data.success || !data.result || !Array.isArray(data.result.results)) {
-      container.innerHTML = "<p>Unexpected API response format.</p>";
+    if (!data.datasets || !Array.isArray(data.datasets)) {
+      container.innerHTML = "<p>Unexpected data format in uk-open-data.json.</p>";
       return;
     }
 
-    const datasets = data.result.results;
+    const datasets = data.datasets;
 
     if (datasets.length === 0) {
       container.innerHTML = "<p>No datasets found.</p>";
       return;
     }
 
-    let html = "<h2>Sample datasets from data.gov.uk</h2>";
+    let html = "<h2>Sample UK Open Data Datasets</h2>";
     html += "<ul>";
 
     datasets.forEach((item) => {
       const title = escapeHtml(item.title || "Untitled dataset");
-      const org =
-        item.organization && item.organization.title
-          ? escapeHtml(item.organization.title)
-          : "Unknown organisation";
-      const desc = item.notes
-        ? escapeHtml(item.notes.slice(0, 150)) + "..."
+      const publisher = escapeHtml(item.publisher || "Unknown publisher");
+      const description = item.description
+        ? escapeHtml(item.description)
         : "";
 
       html += `
         <li>
           <strong>${title}</strong><br>
-          <small>Publisher: ${org}</small><br>
-          <small>${desc}</small>
+          <small>Publisher: ${publisher}</small><br>
+          <small>${description}</small>
         </li>
       `;
     });
@@ -57,7 +54,7 @@ fetch(API_URL)
     container.innerHTML = html;
   })
   .catch((error) => {
-    console.error("Error fetching data:", error);
+    console.error("Error fetching local open data:", error);
     container.innerHTML =
       "<p>Sorry, there was a problem loading the open data. Please try again later.</p>";
   });
