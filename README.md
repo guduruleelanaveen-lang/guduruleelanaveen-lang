@@ -92,10 +92,6 @@ Modules:
 - ✅ **Postman API Fundamentals Student Expert**  
   https://badges.parchment.com/public/assertions/7ixCvMOvS4-0cyHT-IEcaA  
 
-- Machine Learning with Python – *In Progress*  
-- Deep Learning Specialization – *Planned*  
-- SQL for Data Analytics – *Planned*
-
 ---
 
 ## 🚀 Current Focus
