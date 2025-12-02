@@ -1,0 +1,30 @@
+{
+  "source": "data.gov.uk (sample extracted via Postman)",
+  "datasets": [
+    {
+      "title": "Road safety data",
+      "publisher": "Department for Transport",
+      "description": "Road safety data including reported road casualties, types of vehicles, and locations."
+    },
+    {
+      "title": "Air quality measurements in UK cities",
+      "publisher": "Department for Environment, Food & Rural Affairs",
+      "description": "Hourly and daily measurements of air pollutants in major UK cities."
+    },
+    {
+      "title": "Hospital Episode Statistics",
+      "publisher": "NHS England",
+      "description": "Data on admissions, outpatient appointments and A&E attendances at NHS hospitals in England."
+    },
+    {
+      "title": "Local authority population estimates",
+      "publisher": "Office for National Statistics",
+      "description": "Mid-year population estimates for local authorities in the UK."
+    },
+    {
+      "title": "Bus stop locations in London",
+      "publisher": "Transport for London",
+      "description": "Geographic locations and metadata for bus stops across Greater London."
+    }
+  ]
+}
